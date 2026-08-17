@@ -42,12 +42,18 @@ export function Capabilities({ index }: CapabilitiesProps) {
                 {group.description}
               </p>
 
-              {/* mt-auto pins the pills to the bottom so uneven description
-                  lengths don't leave the tag rows misaligned across the grid.
+              {/* Pills follow the description rather than being pinned to the
+                  card bottom with mt-auto. Bottom-pinning aligned the tag rows
+                  but opened a hole mid-card wherever a group had few pills —
+                  worst on Design, which has two. Since every description runs
+                  to one or two lines, letting them sit directly beneath the
+                  text lines the rows up about as well anyway, and the leftover
+                  space falls at the card's foot where it reads as padding.
+
                   Pills are deliberately static: the glow and the top rule
                   already signal hover, and recolouring twelve pills on top of
                   that was noise rather than feedback. */}
-              <ul className="mt-auto flex flex-wrap gap-2 pt-6">
+              <ul className="flex flex-wrap gap-2 pt-6">
                 {group.skills.map((skill) => (
                   <li
                     key={skill}
