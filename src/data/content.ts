@@ -173,22 +173,16 @@ export const projects: Project[] = [
   },
   {
     title: 'E-commerce Website',
-    // ⚠️⚠️ PLACEHOLDER — DO NOT SHIP AS-IS ⚠️⚠️
+    // Description is Isha's own copy, supplied 2026-08-17.
     //
-    // Written as a stand-in at Isha's request so the row can be reviewed with
-    // realistic-length copy. The résumé says only "E-commerce website: Using
-    // Claude AI", so EVERY specific below is invented by Claude, not reported:
-    // the feature list (browsing, filtering, cart, checkout) and the entire
-    // `stack` array. None of it has been verified against the actual project.
-    //
-    // Before sharing the site: replace the description with what it really
-    // does, correct the stack, and add `repo` / `live` if they exist.
-    // Deliberately no repo/live URL here — a fabricated link would 404.
+    // ⚠️ `stack` below is still an unverified guess by Claude — the résumé
+    // lists no stack for this project. Confirm or correct it. There is also no
+    // repo on the GitHub account for this one, so no `repo` / `live` is set;
+    // a fabricated link would 404.
     description:
-      'An online storefront covering the core shopping path — product ' +
-      'browsing, category filtering, cart management and checkout. Built with ' +
-      'AI-assisted development using Claude, from interface layout through to ' +
-      'application logic.',
+      'A shopping app built with Claude AI as a development partner — ' +
+      'covering product browsing, cart functionality, and a clean, ' +
+      'responsive interface designed for a smooth checkout experience.',
     stack: ['React.js', 'Node.js', 'Claude AI'],
   },
 ]
