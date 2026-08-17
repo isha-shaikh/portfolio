@@ -20,9 +20,16 @@ export function About({ index }: AboutProps) {
           under the paragraph. */}
       <div className="grid grid-cols-1 gap-14 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-20">
         <div>
+          {/* Spacing goes on the wrapper, not the <p>. Each paragraph is the
+              only child of its own Reveal, so a `last:mb-0` on the paragraph
+              matches every one of them and cancels the gap entirely. */}
           {about.paragraphs.map((paragraph, i) => (
-            <Reveal key={i} delay={i * 90}>
-              <p className="mb-6 text-lg leading-relaxed text-bone/55 last:mb-0">
+            <Reveal
+              key={i}
+              delay={i * 90}
+              className={i > 0 ? 'mt-6' : undefined}
+            >
+              <p className="text-lg leading-relaxed text-bone/55">
                 {paragraph}
               </p>
             </Reveal>

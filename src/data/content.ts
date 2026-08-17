@@ -82,18 +82,31 @@ export const hero = {
 }
 
 /**
- * About section.
+ * About section. `paragraphs` renders in order — personal first, credentials
+ * second. Any number of paragraphs works with no layout change.
  *
- * `paragraphs` renders in order. The first is the résumé's professional
- * summary, relocated here from the hero.
+ * ⚠️ Paragraph one is a draft written by Claude and approved by Isha on
+ *    2026-08-17, not her own words. Facts are drawn from the résumé (BCA,
+ *    third year, MIT Vishwaprayag, Solapur, React/Node, Coursera Python and
+ *    data analysis) and from the three GitHub repos (news reader, employee
+ *    directory, Express-backed article platform).
  *
- * To add a personal note, append a second string — the section handles any
- * number of paragraphs with no layout change. Something in your own voice
- * about what draws you to this work would sit well as paragraph two; Claude
- * has deliberately not written one for you.
+ *    The closing sentence about generative AI is an inference from the
+ *    "Generative AI" role line and the Claude-built e-commerce project — Isha
+ *    did not state it. Worth replacing with her own phrasing when convenient.
+ *
+ * Paragraph two is the résumé's professional summary, relocated from the hero.
  */
 export const about = {
   paragraphs: [
+    "I'm a third-year BCA student at MIT Vishwaprayag University in Solapur, " +
+      'working mostly in React and Node and moving steadily across the full ' +
+      'stack. Alongside coursework I have built applications end to end — a ' +
+      'news reader, an employee directory, an article platform with its own ' +
+      'Express API — and worked through Coursera courses in Python and data ' +
+      'analysis to strengthen the data side. What interests me most at the ' +
+      'moment is where generative AI meets everyday development work.',
+
     'Passionate and detail-oriented BCA student with expertise in modern web ' +
       'development technologies and data analysis. Proven track record of building ' +
       'responsive web applications using React.js, Node.js, and various programming ' +
