@@ -337,9 +337,21 @@ export const caseStudy = {
   /** Rendered as a bordered callout, not buried in the prose. */
   partnerNote: 'Built with Claude AI as a development partner',
 
-  // ⚠️ UNVERIFIED — guessed from Isha's skills list, not from the project.
-  // There is no repo to check it against. Confirm or correct before sharing.
-  stack: ['React.js', 'Node.js', 'Claude AI'],
+  /**
+   * Empty on purpose. This previously read ['React.js', 'Node.js', 'Claude AI'],
+   * but React.js and Node.js were guessed from Isha's skills list — the résumé
+   * states no stack for this project and there is no repo to check against.
+   * Claude AI is real, but `partnerNote` above already says so, so a pill
+   * repeating it added nothing.
+   *
+   * Removing it was the only fix available without inventing a replacement:
+   * this is the most visually prominent project on the site, so an unverified
+   * stack here is the claim an interviewer is most likely to probe.
+   *
+   * Fill it in when the real stack is known — the pills render automatically:
+   *   stack: ['React', 'Tailwind CSS', 'Claude AI'],
+   */
+  stack: [] as string[],
 
   /** No repo or deployment exists yet. Set either and a link button appears. */
   repo: null as string | null,
