@@ -9,9 +9,14 @@ export function Contact() {
       <Reveal>
         {/* The email is the largest interactive element on the page — the
             single clear call to action. */}
+        {/* Capped at 2.75rem: this column is only ~492px wide at 1440px, and
+            at 3.25rem the address overflowed and break-all snapped it
+            mid-word, orphaning a single "m" on the second line. break-words
+            (rather than break-all) means any future longer address breaks at
+            the @ or a dot instead of an arbitrary character. */}
         <a
           href={`mailto:${contact.email}`}
-          className="group inline-block font-display text-[clamp(1.75rem,4.5vw,3.25rem)] leading-tight break-all text-bone transition-colors duration-500 ease-cinematic hover:text-gold"
+          className="group inline-block font-display text-[clamp(1.5rem,3.2vw,2.75rem)] leading-tight break-words text-bone transition-colors duration-500 ease-cinematic hover:text-gold"
         >
           {contact.email}
           <span

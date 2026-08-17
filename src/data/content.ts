@@ -156,19 +156,28 @@ export const capabilities: SkillGroup[] = [
 export const projects: Project[] = [
   {
     title: 'News Magazine Website',
+    // Description and stack verified against the repo on 2026-08-17, not taken
+    // from the résumé. The résumé called this "full-stack ... content
+    // management", but package.json lists only react and react-dom — there is
+    // no server, database or CMS. It's a frontend client for a public API.
     description:
-      'Full-stack web application for dynamic news content management.',
-    // No stack listed: the résumé states none for this project. React.js and
-    // Node.js appear only in the general summary, so attributing them here
-    // would be a guess. Add the real stack once confirmed.
+      'A React news reader pulling live headlines from the NewsAPI, with ' +
+      'category filtering across technology, business, health and sports, ' +
+      'plus keyword search.',
+    stack: ['React.js', 'Vite', 'NewsAPI'],
     repo: 'https://github.com/isha-shaikh/news-magazine',
   },
   {
     title: 'Employee List Management System',
+    // Verified against the repo on 2026-08-17. The résumé claimed "complete
+    // CRUD operations", but the source has only two handlers, both bulk
+    // employees.map() updates behind "Promote All" and "Hike All" — no create,
+    // no delete, no persistence. Described as what it actually does.
     description:
-      'Web-based employee records management application with complete CRUD ' +
-      'operations and an intuitive user interface, built responsively.',
-    stack: ['HTML', 'CSS', 'JavaScript'],
+      'A React employee directory with bulk promotion and salary actions ' +
+      'applied across all records, built with React Bootstrap in a ' +
+      'responsive card layout.',
+    stack: ['React.js', 'React Bootstrap', 'CSS'],
     repo: 'https://github.com/isha-shaikh/Employee-List',
   },
   {
