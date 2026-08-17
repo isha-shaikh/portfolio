@@ -1,6 +1,7 @@
 import { Capabilities } from './components/Capabilities'
 import { Certifications } from './components/Certifications'
 import { Contact } from './components/Contact'
+import { Cursor } from './components/Cursor'
 import { Education } from './components/Education'
 import { Experience } from './components/Experience'
 import { Footer } from './components/Footer'
@@ -35,6 +36,7 @@ export default function App() {
         Skip to content
       </a>
 
+      <Cursor />
       <Grain />
 
       {/* overflow-x-clip contains the projects' horizontal reveal offset

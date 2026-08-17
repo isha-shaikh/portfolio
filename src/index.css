@@ -34,6 +34,16 @@
     text-rendering: optimizeLegibility;
   }
 
+  /* The native pointer is hidden only once <Cursor> has mounted and set this
+     attribute — so if the JS fails, is disabled, or the device is touch-only,
+     the system cursor is never taken away. */
+  :root[data-cursor],
+  :root[data-cursor] *,
+  :root[data-cursor] a,
+  :root[data-cursor] button {
+    cursor: none;
+  }
+
   /* Gold focus ring, globally. Keyboard users get the accent too. */
   :focus-visible {
     outline: 2px solid var(--color-gold);
