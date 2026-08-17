@@ -80,17 +80,18 @@ export const hero = {
 }
 
 /**
- * Derived from the résumé so every figure is checkable:
- *   03   — projects in the résumé portfolio
- *   07   — certifications listed (4 data science + 3 professional)
- *   16   — named technologies across the technical expertise section
+ * Every figure is checkable against the arrays below — recount if you edit them:
+ *   03   — entries in `projects`
+ *   07   — entries across `certifications` (4 data science + 3 professional)
+ *   21   — concrete technologies in `capabilities`: Languages 4 + Frontend 7 +
+ *          Backend 4 + Tools 6. The Design and Competencies groups are excluded
+ *          because they list disciplines and skills, not technologies.
  *   2026 — expected graduation
- * Update these if any of the above changes.
  */
 export const stats: Stat[] = [
   { value: '03', label: 'Projects Built' },
   { value: '07', label: 'Certifications' },
-  { value: '16', label: 'Technologies' },
+  { value: '21', label: 'Technologies' },
   { value: '2026', label: 'Graduating' },
 ]
 
@@ -120,19 +121,38 @@ export const capabilities: SkillGroup[] = [
     title: 'Frontend',
     description:
       'Building responsive, component-driven interfaces for the browser.',
-    skills: ['HTML5', 'CSS3', 'React.js', 'Bootstrap 5'],
+    // React Router, Axios and Tailwind CSS added 2026-08-17 — all three are in
+    // active use in the Article Web App repo but absent from the résumé.
+    skills: [
+      'HTML5',
+      'CSS3',
+      'React.js',
+      'React Router',
+      'Axios',
+      'Tailwind CSS',
+      'Bootstrap 5',
+    ],
   },
   {
     title: 'Backend',
     description:
       'Server-side logic, data persistence, and caching for web applications.',
-    skills: ['Node.js', 'SQL (Basic)', 'Redis'],
+    // Express added 2026-08-17 — it powers the Article Web App's REST API.
+    skills: ['Node.js', 'Express', 'SQL (Basic)', 'Redis'],
   },
   {
     title: 'Tools',
     description:
       'Development, analysis, and publishing environments used day to day.',
-    skills: ['VS Code', 'MATLAB', 'Jupyter Notebook', 'WordPress', 'Excel'],
+    // Vite added 2026-08-17 — the build tool behind the news reader.
+    skills: [
+      'VS Code',
+      'Vite',
+      'MATLAB',
+      'Jupyter Notebook',
+      'WordPress',
+      'Excel',
+    ],
   },
   {
     title: 'Design',
@@ -154,6 +174,21 @@ export const capabilities: SkillGroup[] = [
 ]
 
 export const projects: Project[] = [
+  {
+    // Leads the list deliberately: it's the only project with a real backend,
+    // and so the only one that substantiates "Full-Stack Developer" in the hero.
+    // Verified against the repo on 2026-08-17 — Express API (GET /articles and
+    // GET /articles/:id) consumed over HTTP by a React SPA with client-side
+    // routing. Articles are a hardcoded array in server.js, so "full-stack" is
+    // claimed for the architecture, not for persistence.
+    title: 'Article Web App',
+    description:
+      'A full-stack article platform pairing an Express REST API with a React ' +
+      'single-page app — article listing, client-side routing, and individual ' +
+      'detail views fetched per article.',
+    stack: ['React', 'Express', 'React Router', 'Axios', 'Tailwind CSS'],
+    repo: 'https://github.com/isha-shaikh/Article-Web-App',
+  },
   {
     title: 'News Magazine Website',
     // Description and stack verified against the repo on 2026-08-17, not taken
@@ -181,20 +216,14 @@ export const projects: Project[] = [
     stack: ['React.js', 'React Bootstrap', 'CSS'],
     repo: 'https://github.com/isha-shaikh/Employee-List',
   },
-  {
-    title: 'E-commerce Website',
-    // Description is Isha's own copy, supplied 2026-08-17.
-    //
-    // ⚠️ `stack` below is still an unverified guess by Claude — the résumé
-    // lists no stack for this project. Confirm or correct it. There is also no
-    // repo on the GitHub account for this one, so no `repo` / `live` is set;
-    // a fabricated link would 404.
-    description:
-      'A shopping app built with Claude AI as a development partner — ' +
-      'covering product browsing, cart functionality, and a clean, ' +
-      'responsive interface designed for a smooth checkout experience.',
-    stack: ['React.js', 'Node.js', 'Claude AI'],
-  },
+  // The E-commerce Website row was removed on 2026-08-17. There is no repo for
+  // it on the GitHub account, so it could not be linked or verified, and its
+  // stack was guesswork. Isha's own description is preserved here in case the
+  // project is pushed later and the row is restored:
+  //
+  //   'A shopping app built with Claude AI as a development partner —
+  //    covering product browsing, cart functionality, and a clean, responsive
+  //    interface designed for a smooth checkout experience.'
 ]
 
 /**
