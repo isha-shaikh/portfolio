@@ -173,6 +173,30 @@ export const capabilities: SkillGroup[] = [
   },
 ]
 
+/**
+ * Professional Skills from the résumé's Core Competencies section.
+ *
+ * Rendered as a full-width band closing the capabilities grid rather than a
+ * seventh card: the grid is a 3x2, and a lone seventh cell would leave two
+ * empty boxes with hairline borders on one side. These also aren't a peer
+ * category — they apply across all six groups above.
+ *
+ * Deliberately excluded from the "Technologies" stat, which counts tools only.
+ */
+export const professionalSkills = {
+  title: 'Professional',
+  // Avoid echoing the Competencies card directly above, which already says
+  // "carried across every project".
+  description: 'How the work gets organised, communicated and delivered.',
+  skills: [
+    'Strong communication',
+    'Team collaboration',
+    'Time management',
+    'Project organization',
+    'Presentation skills',
+  ],
+}
+
 export const projects: Project[] = [
   {
     // Leads the list deliberately: it's the only project with a real backend,

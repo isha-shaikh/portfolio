@@ -1,4 +1,4 @@
-import { capabilities } from '../data/content'
+import { capabilities, professionalSkills } from '../data/content'
 import { GlowCard } from './GlowCard'
 import { Reveal } from './Reveal'
 import { SectionLabel } from './SectionLabel'
@@ -61,6 +61,34 @@ export function Capabilities({ index }: CapabilitiesProps) {
           </Reveal>
         ))}
       </div>
+
+      {/* Full-width band closing the grid. Continues the same hairline borders
+          (no border-t — the grid's last row already supplies it) so it reads as
+          part of the same block rather than a stray card. Laid out
+          horizontally, which is what distinguishes it from the cards above. */}
+      <Reveal delay={160}>
+        <GlowCard className="flex flex-col gap-6 border-r border-b border-l border-slate p-8 transition-colors duration-500 ease-cinematic hover:bg-onyx/60 lg:flex-row lg:items-center lg:gap-12">
+          <div className="lg:w-64 lg:shrink-0">
+            <h3 className="font-display text-2xl text-bone">
+              {professionalSkills.title}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-bone/50">
+              {professionalSkills.description}
+            </p>
+          </div>
+
+          <ul className="flex flex-wrap gap-2">
+            {professionalSkills.skills.map((skill) => (
+              <li
+                key={skill}
+                className="u-label border border-slate px-2.5 py-1 text-bone/55"
+              >
+                {skill}
+              </li>
+            ))}
+          </ul>
+        </GlowCard>
+      </Reveal>
     </section>
   )
 }
