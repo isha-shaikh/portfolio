@@ -2,8 +2,11 @@ import { useEffect, useRef, useState } from 'react'
 
 /** How much of the remaining distance the ring closes each frame. Lower = more lag. */
 const RING_EASE = 0.18
-/** Ring scale when hovering something interactive. */
-const HOT_SCALE = 1.9
+/**
+ * Ring scale when hovering something interactive. Kept modest: at 1.9 with a
+ * 32px ring the cursor sat visibly on top of large type like the contact email.
+ */
+const HOT_SCALE = 1.45
 
 /**
  * Custom cursor: a gold ring that trails the pointer, plus a dot that tracks it
@@ -93,12 +96,12 @@ export function Cursor() {
         target.closest('a[href], button, [role="button"]') !== null
       if (interactive !== hot) {
         hot = interactive
+        // Border only — no fill. A tinted fill acted as a lens over whatever
+        // text sat beneath the cursor, which was most obvious on the large
+        // display type. The scale change plus the colour shift is enough signal.
         ring.style.borderColor = hot
           ? 'var(--color-champagne)'
           : 'var(--color-gold)'
-        ring.style.backgroundColor = hot
-          ? 'color-mix(in oklab, var(--color-gold) 12%, transparent)'
-          : 'transparent'
       }
     }
 
@@ -130,7 +133,7 @@ export function Cursor() {
         aria-hidden="true"
         // transform is deliberately absent from the transition list — the rAF
         // loop owns it.
-        className="pointer-events-none fixed top-0 left-0 z-[60] h-8 w-8 rounded-full border border-gold opacity-0 transition-[opacity,border-color,background-color] duration-300 ease-cinematic will-change-transform"
+        className="pointer-events-none fixed top-0 left-0 z-[60] h-5 w-5 rounded-full border border-gold opacity-0 transition-[opacity,border-color] duration-300 ease-cinematic will-change-transform"
       />
       <div
         ref={dotRef}
