@@ -58,9 +58,12 @@ export function Hero() {
             </p>
           </Reveal>
 
+          {/* Short tagline only. The full résumé summary lives in the About
+              section — two long prose blocks in the same voice read as
+              repetition, and it keeps the hero uncluttered. */}
           <Reveal delay={450}>
-            <p className="mt-8 max-w-[58ch] text-lg leading-relaxed text-bone/55">
-              {hero.summary}
+            <p className="mt-8 max-w-[46ch] text-lg leading-relaxed text-bone/55">
+              {hero.tagline}
             </p>
           </Reveal>
         </div>
@@ -97,7 +100,7 @@ export function Hero() {
 
       <Reveal delay={720} className="relative mt-16">
         <a
-          href="#capabilities"
+          href="#about-me"
           className="u-label group inline-flex items-center gap-3 text-bone/55 transition-colors duration-300 hover:text-gold"
         >
           Scroll

@@ -1,4 +1,5 @@
 import { projects } from '../data/content'
+import { CaseStudy } from './CaseStudy'
 import { Reveal } from './Reveal'
 import { SectionLabel } from './SectionLabel'
 
@@ -15,6 +16,11 @@ export function Projects({ index }: ProjectsProps) {
       aria-labelledby="proj-label"
     >
       <SectionLabel index={index} title="Selected Work" id="proj-label" />
+
+      {/* Featured first, then the list. The rows keep their own 01-03 numbering
+          — the case study sits outside that sequence rather than taking 01,
+          which keeps the numbered list matching the three linkable projects. */}
+      <CaseStudy />
 
       {/* No overflow-hidden here — it clipped the focus ring on the left edge
           of each title link. The horizontal reveal offset is contained by

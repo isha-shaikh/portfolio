@@ -70,14 +70,63 @@ export const hero = {
     'Generative AI',
   ],
 
-  summary:
-    'Passionate and detail-oriented BCA student with expertise in modern web ' +
-    'development technologies and data analysis. Proven track record of building ' +
-    'responsive web applications using React.js, Node.js, and various programming ' +
-    'languages. Currently developing a live service platform while pursuing advanced ' +
-    'knowledge in full-stack development. Seeking opportunities to contribute ' +
-    'technical skills and innovative solutions to forward-thinking organizations.',
+  /**
+   * Short hero line. The full résumé summary that used to sit here moved into
+   * the About section — two long prose blocks in the same voice read as
+   * repetition. Every fact below is from the résumé: third year, Solapur,
+   * responsive web apps, moving deeper into full-stack.
+   */
+  tagline:
+    'Third-year BCA student in Solapur, building responsive web applications ' +
+    'and moving deeper into full-stack development.',
 }
+
+/**
+ * About section.
+ *
+ * `paragraphs` renders in order. The first is the résumé's professional
+ * summary, relocated here from the hero.
+ *
+ * To add a personal note, append a second string — the section handles any
+ * number of paragraphs with no layout change. Something in your own voice
+ * about what draws you to this work would sit well as paragraph two; Claude
+ * has deliberately not written one for you.
+ */
+export const about = {
+  paragraphs: [
+    'Passionate and detail-oriented BCA student with expertise in modern web ' +
+      'development technologies and data analysis. Proven track record of building ' +
+      'responsive web applications using React.js, Node.js, and various programming ' +
+      'languages. Currently developing a live service platform while pursuing advanced ' +
+      'knowledge in full-stack development. Seeking opportunities to contribute ' +
+      'technical skills and innovative solutions to forward-thinking organizations.',
+  ],
+}
+
+/**
+ * Photos for the About section.
+ *
+ * The grid adapts to the array length with no restructuring needed:
+ *   1 photo  → one full-width frame at 4:5
+ *   2 photos → two side-by-side squares
+ *   3 photos → first spans the row, two squares beneath
+ *
+ * Adding a photo is one entry here. Nothing renders for slots that don't
+ * exist, so there are never empty placeholder frames.
+ */
+export const aboutPhotos: {
+  src: string
+  alt: string
+  /** CSS object-position. Tune the crop per photo. */
+  objectPosition?: string
+}[] = [
+  {
+    src: '/portrait.jpg',
+    alt: 'Isha Nashir Shaikh',
+    // Same crop as the hero, by choice.
+    objectPosition: 'center 60%',
+  },
+]
 
 /**
  * Every figure is checkable against the arrays below — recount if you edit them:
@@ -240,15 +289,52 @@ export const projects: Project[] = [
     stack: ['React.js', 'React Bootstrap', 'CSS'],
     repo: 'https://github.com/isha-shaikh/Employee-List',
   },
-  // The E-commerce Website row was removed on 2026-08-17. There is no repo for
-  // it on the GitHub account, so it could not be linked or verified, and its
-  // stack was guesswork. Isha's own description is preserved here in case the
-  // project is pushed later and the row is restored:
-  //
-  //   'A shopping app built with Claude AI as a development partner —
-  //    covering product browsing, cart functionality, and a clean, responsive
-  //    interface designed for a smooth checkout experience.'
 ]
+
+/**
+ * Featured case study, shown above the project list.
+ *
+ * `image: null` renders a designed abstract panel rather than a broken or
+ * empty image. Both states share the same 16:10 container, so setting a real
+ * screenshot later causes no layout shift:
+ *
+ *   image: '/ecommerce.png'   // drop the file in public/
+ */
+export const caseStudy = {
+  eyebrow: 'Featured Case Study',
+  title: 'E-commerce Website',
+
+  /** Isha's own copy, supplied 2026-08-17. */
+  lead:
+    'A shopping app built with Claude AI as a development partner — ' +
+    'covering product browsing, cart functionality, and a clean, ' +
+    'responsive interface designed for a smooth checkout experience.',
+
+  /**
+   * ⚠️ Written by Claude, describing the working method rather than the
+   * feature set — no features, metrics or scale are claimed beyond `lead`
+   * above. Rewrite in your own voice when you get a chance.
+   */
+  body:
+    'The build leaned on an AI-assisted workflow rather than line-by-line ' +
+    'authoring: describing the intended behaviour and interface in plain ' +
+    'language, reviewing what came back, and refining the parts that needed ' +
+    'correcting.',
+
+  /** Rendered as a bordered callout, not buried in the prose. */
+  partnerNote: 'Built with Claude AI as a development partner',
+
+  // ⚠️ UNVERIFIED — guessed from Isha's skills list, not from the project.
+  // There is no repo to check it against. Confirm or correct before sharing.
+  stack: ['React.js', 'Node.js', 'Claude AI'],
+
+  /** No repo or deployment exists yet. Set either and a link button appears. */
+  repo: null as string | null,
+  live: null as string | null,
+
+  /** null → the designed panel renders instead of an image. */
+  image: null as string | null,
+}
 
 /**
  * Work history. Empty because the résumé contains no employment or internship

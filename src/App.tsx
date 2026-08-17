@@ -1,3 +1,4 @@
+import { About } from './components/About'
 import { Capabilities } from './components/Capabilities'
 import { Certifications } from './components/Certifications'
 import { Contact } from './components/Contact'
@@ -20,6 +21,7 @@ export default function App() {
   const numeral = (position: number) => String(position).padStart(2, '0')
 
   let n = 0
+  const aboutNo = numeral(++n)
   const capabilitiesNo = numeral(++n)
   const projectsNo = numeral(++n)
   const experienceNo = hasExperience ? numeral(++n) : ''
@@ -30,7 +32,7 @@ export default function App() {
     <>
       {/* First tab stop on the page. Visually hidden until focused. */}
       <a
-        href="#capabilities"
+        href="#about-me"
         className="u-label sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-onyx focus:px-5 focus:py-3 focus:text-gold"
       >
         Skip to content
@@ -45,6 +47,7 @@ export default function App() {
       <div className="mx-auto w-full max-w-[1240px] overflow-x-clip px-6 sm:px-10 lg:px-16">
         <main>
           <Hero />
+          <About index={aboutNo} />
           <Capabilities index={capabilitiesNo} />
           <Projects index={projectsNo} />
           <Experience index={experienceNo} />
