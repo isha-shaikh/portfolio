@@ -1,0 +1,95 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Design tokens. Tailwind v4 reads these directly — `--color-void` becomes
+   `bg-void` / `text-void` / `border-void`, `--font-display` becomes
+   `font-display`, etc. No raw hex should appear in any component.
+   --------------------------------------------------------------------------- */
+@theme {
+  --color-void: #08080a;
+  --color-onyx: #111114;
+  --color-slate: #24242a;
+  --color-gold: #e3b23c;
+  --color-champagne: #f7d486;
+  --color-bone: #f2efe9;
+
+  --font-display: 'Instrument Serif', ui-serif, Georgia, serif;
+  --font-sans: 'Inter Tight', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* The single easing curve used across the whole site. */
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-void);
+    color: var(--color-bone);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Gold focus ring, globally. Keyboard users get the accent too. */
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-gold);
+    color: var(--color-void);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Mono micro-label: uppercase, tracked out, gold. Used for section
+     numerals, tech tags and metadata throughout. */
+  .u-label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /* Cursor-follow glow. Position is driven by --glow-x / --glow-y, which
+     GlowCard writes directly onto the element on pointermove — no React
+     state, so tracking never triggers a re-render. */
+  .u-glow {
+    opacity: 0;
+    transition: opacity 400ms var(--ease-cinematic);
+    background: radial-gradient(
+      280px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+      rgba(227, 178, 60, 0.14),
+      rgba(227, 178, 60, 0.04) 40%,
+      transparent 72%
+    );
+  }
+
+  /* Only on devices with a real cursor — otherwise a tap leaves the glow
+     stuck on with no pointer to justify it. */
+  @media (hover: hover) and (pointer: fine) {
+    .group:hover .u-glow {
+      opacity: 1;
+    }
+  }
+}
