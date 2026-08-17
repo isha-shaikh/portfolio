@@ -161,7 +161,7 @@ export const projects: Project[] = [
     // No stack listed: the résumé states none for this project. React.js and
     // Node.js appear only in the general summary, so attributing them here
     // would be a guess. Add the real stack once confirmed.
-    repo: 'https://github.com/isha-shaikh/news-magazine.git',
+    repo: 'https://github.com/isha-shaikh/news-magazine',
   },
   {
     title: 'Employee List Management System',
@@ -169,18 +169,27 @@ export const projects: Project[] = [
       'Web-based employee records management application with complete CRUD ' +
       'operations and an intuitive user interface, built responsively.',
     stack: ['HTML', 'CSS', 'JavaScript'],
-    repo: 'https://github.com/isha-shaikh/Employee-List.git',
+    repo: 'https://github.com/isha-shaikh/Employee-List',
   },
   {
     title: 'E-commerce Website',
-    // ⚠️ Written as a stand-in at Isha's request — the résumé gives only
-    // "E-commerce website: Using Claude AI", so this describes the project in
-    // general terms without claiming specific features. Replace with the real
-    // detail, and add `repo` / `live` URLs, when available.
+    // ⚠️⚠️ PLACEHOLDER — DO NOT SHIP AS-IS ⚠️⚠️
+    //
+    // Written as a stand-in at Isha's request so the row can be reviewed with
+    // realistic-length copy. The résumé says only "E-commerce website: Using
+    // Claude AI", so EVERY specific below is invented by Claude, not reported:
+    // the feature list (browsing, filtering, cart, checkout) and the entire
+    // `stack` array. None of it has been verified against the actual project.
+    //
+    // Before sharing the site: replace the description with what it really
+    // does, correct the stack, and add `repo` / `live` if they exist.
+    // Deliberately no repo/live URL here — a fabricated link would 404.
     description:
-      'An online storefront built with AI-assisted development, using Claude ' +
-      'to move from interface layout through to application logic.',
-    stack: ['Claude AI'],
+      'An online storefront covering the core shopping path — product ' +
+      'browsing, category filtering, cart management and checkout. Built with ' +
+      'AI-assisted development using Claude, from interface layout through to ' +
+      'application logic.',
+    stack: ['React.js', 'Node.js', 'Claude AI'],
   },
 ]
 
