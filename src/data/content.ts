@@ -160,10 +160,11 @@ export const projects: Project[] = [
     // from the résumé. The résumé called this "full-stack ... content
     // management", but package.json lists only react and react-dom — there is
     // no server, database or CMS. It's a frontend client for a public API.
+    // NB: the navbar renders a search input, but it has no handlers or state
+    // attached — it's presentational only, so search is NOT claimed here.
     description:
       'A React news reader pulling live headlines from the NewsAPI, with ' +
-      'category filtering across technology, business, health and sports, ' +
-      'plus keyword search.',
+      'category filtering across technology, business, health and sports.',
     stack: ['React.js', 'Vite', 'NewsAPI'],
     repo: 'https://github.com/isha-shaikh/news-magazine',
   },
