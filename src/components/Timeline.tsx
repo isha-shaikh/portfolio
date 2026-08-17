@@ -1,6 +1,7 @@
 import type { TimelineItem } from '../data/content'
 import { useReveal } from '../hooks/useReveal'
 import { Reveal } from './Reveal'
+import { Wipe } from './Wipe'
 
 interface TimelineProps {
   items: TimelineItem[]
@@ -49,7 +50,7 @@ export function Timeline({ items, heading }: TimelineProps) {
               )}
 
               <h4 className="mt-3 font-display text-2xl leading-snug text-bone">
-                {item.title}
+                <Wipe delay={60}>{item.title}</Wipe>
               </h4>
 
               {item.subtitle && (

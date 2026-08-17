@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { HeadlineLine } from '../data/content'
 import { prefersReducedMotion } from '../hooks/useReveal'
+import { INTRO_DONE, introWillPlay } from '../lib/intro'
 
 interface AnimatedHeadlineProps {
   lines: HeadlineLine[]
@@ -14,6 +15,8 @@ const CHAR_STAGGER = 18
 const LINE_DELAY = 90
 /** Lets fonts settle so characters don't reflow mid-animation. */
 const START_DELAY = 80
+/** Ceiling on waiting for the title card, so the name can never stay hidden. */
+const INTRO_FAILSAFE = 4000
 
 /** --color-gold and --color-champagne, as RGB triples. */
 const GOLD = [227, 178, 60] as const
@@ -47,6 +50,22 @@ export function AnimatedHeadline({
 
   useEffect(() => {
     if (played) return
+
+    // When the title card is playing, hold the letters until it has lifted —
+    // otherwise the whole cascade happens behind the curtain and is never seen.
+    if (introWillPlay()) {
+      const release = () => setPlayed(true)
+      window.addEventListener(INTRO_DONE, release, { once: true })
+      // Fallback: if the event never arrives — the card errored, was removed,
+      // or something else went wrong — play anyway rather than leaving the
+      // name permanently invisible.
+      const failsafe = setTimeout(release, INTRO_FAILSAFE)
+      return () => {
+        window.removeEventListener(INTRO_DONE, release)
+        clearTimeout(failsafe)
+      }
+    }
+
     const timer = setTimeout(() => setPlayed(true), START_DELAY)
     return () => clearTimeout(timer)
   }, [played])

@@ -2,6 +2,7 @@ import { caseStudy } from '../data/content'
 import { CaseStudyMedia } from './CaseStudyMedia'
 import { GlowCard } from './GlowCard'
 import { Reveal } from './Reveal'
+import { Wipe } from './Wipe'
 
 /**
  * The featured project, given a full card above the plain project rows.
@@ -24,7 +25,7 @@ export function CaseStudy() {
             <p className="u-label text-gold">{caseStudy.eyebrow}</p>
 
             <h3 className="mt-5 font-display text-[clamp(2rem,4.5vw,3.25rem)] leading-tight text-bone">
-              {caseStudy.title}
+              <Wipe delay={80}>{caseStudy.title}</Wipe>
             </h3>
 
             <p className="mt-5 text-lg leading-relaxed text-bone/70">

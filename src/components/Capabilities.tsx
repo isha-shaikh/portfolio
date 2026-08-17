@@ -1,6 +1,7 @@
 import { capabilities, professionalSkills } from '../data/content'
 import { GlowCard } from './GlowCard'
 import { Reveal } from './Reveal'
+import { Wipe } from './Wipe'
 import { SectionLabel } from './SectionLabel'
 
 interface CapabilitiesProps {
@@ -35,7 +36,7 @@ export function Capabilities({ index }: CapabilitiesProps) {
               </span>
 
               <h3 className="mt-3 font-display text-2xl text-bone">
-                {group.title}
+                <Wipe delay={80}>{group.title}</Wipe>
               </h3>
 
               <p className="mt-3 text-sm leading-relaxed text-bone/50">
@@ -76,7 +77,7 @@ export function Capabilities({ index }: CapabilitiesProps) {
         <GlowCard className="flex flex-col gap-6 border-r border-b border-l border-slate p-8 transition-colors duration-500 ease-cinematic hover:bg-onyx/60 lg:flex-row lg:items-center lg:gap-12">
           <div className="lg:w-64 lg:shrink-0">
             <h3 className="font-display text-2xl text-bone">
-              {professionalSkills.title}
+              <Wipe>{professionalSkills.title}</Wipe>
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-bone/50">
               {professionalSkills.description}

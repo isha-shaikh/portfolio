@@ -28,10 +28,56 @@
 
   body {
     background-color: var(--color-void);
+    /* Vignette. Deliberately a body *background* layer rather than an overlay
+       above the content: an overlay would darken the text too and undo the
+       WCAG AA contrast work. As a background it only deepens the ground.
+       background-attachment: fixed anchors it to the viewport, so it behaves
+       like a lens rather than scrolling away with the page. */
+    background-image: radial-gradient(
+      ellipse 90% 75% at 50% 45%,
+      transparent 28%,
+      rgba(0, 0, 0, 0.45) 68%,
+      rgba(0, 0, 0, 0.72) 100%
+    );
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: var(--color-bone);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+  }
+
+  /* Film-grain jitter. Eight discrete positions a second — grain that slides
+     smoothly reads as a moving texture; grain that jumps reads as projection.
+     The reduced-motion block below collapses the duration, leaving it static. */
+  @keyframes u-grain-shift {
+    0% {
+      transform: translate(0, 0);
+    }
+    12.5% {
+      transform: translate(-3%, -2%);
+    }
+    25% {
+      transform: translate(2%, -4%);
+    }
+    37.5% {
+      transform: translate(-4%, 3%);
+    }
+    50% {
+      transform: translate(3%, 2%);
+    }
+    62.5% {
+      transform: translate(-2%, -3%);
+    }
+    75% {
+      transform: translate(4%, 1%);
+    }
+    87.5% {
+      transform: translate(-1%, 4%);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
   }
 
   /* The native pointer is hidden only once <Cursor> has mounted and set this

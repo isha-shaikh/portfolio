@@ -1,3 +1,5 @@
+import { Wipe } from './Wipe'
+
 interface SectionLabelProps {
   /** Two-digit section numeral, e.g. "01". */
   index: string
@@ -18,8 +20,10 @@ export function SectionLabel({ index, title, id }: SectionLabelProps) {
   return (
     <div className="mb-12 flex items-center gap-4 border-b border-slate pb-4">
       <h2 className="u-label text-gold" id={id}>
-        <span aria-hidden="true">{index} — </span>
-        {title}
+        <Wipe>
+          <span aria-hidden="true">{index} — </span>
+          {title}
+        </Wipe>
       </h2>
     </div>
   )

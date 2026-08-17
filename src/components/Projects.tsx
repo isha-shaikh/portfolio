@@ -1,6 +1,7 @@
 import { projects } from '../data/content'
 import { CaseStudy } from './CaseStudy'
 import { Reveal } from './Reveal'
+import { Wipe } from './Wipe'
 import { SectionLabel } from './SectionLabel'
 
 interface ProjectsProps {
@@ -66,13 +67,13 @@ export function Projects({ index }: ProjectsProps) {
                         rel="noreferrer noopener"
                         className="transition-colors duration-300 after:absolute after:inset-0 hover:text-gold focus-visible:text-gold"
                       >
-                        {project.title}
+                        <Wipe delay={60}>{project.title}</Wipe>
                         <span className="sr-only"> — view on GitHub</span>
                       </a>
                     ) : (
                       // No repository published — render as plain text rather
                       // than a dead link.
-                      project.title
+                      <Wipe delay={60}>{project.title}</Wipe>
                     )}
                   </h3>
 

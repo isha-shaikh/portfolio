@@ -10,6 +10,7 @@ import { Grain } from './components/Grain'
 import { Hero } from './components/Hero'
 import { Projects } from './components/Projects'
 import { SectionLabel } from './components/SectionLabel'
+import { TitleCard } from './components/TitleCard'
 import { experience } from './data/content'
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
         Skip to content
       </a>
 
+      <TitleCard />
       <Cursor />
       <Grain />
 

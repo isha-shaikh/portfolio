@@ -1,5 +1,6 @@
 import { certifications } from '../data/content'
 import { Reveal } from './Reveal'
+import { Wipe } from './Wipe'
 import { SectionLabel } from './SectionLabel'
 
 interface CertificationsProps {
@@ -25,7 +26,9 @@ export function Certifications({ index }: CertificationsProps) {
       <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-20">
         {certifications.map((group, groupIndex) => (
           <Reveal key={group.title} delay={groupIndex * 90}>
-            <h3 className="u-label mb-8 text-gold">{group.title}</h3>
+            <h3 className="u-label mb-8 text-gold">
+              <Wipe>{group.title}</Wipe>
+            </h3>
 
             <ul>
               {group.items.map((item) => (
